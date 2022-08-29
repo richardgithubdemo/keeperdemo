@@ -8,14 +8,14 @@ jobs:
     
     steps:
     
-      - name: Retrieve secrets from Keeper
+      = name: Retrieve secrets from Keeper
         id: ksecrets
         uses: Keeper-Security/ksm-action@master
         with:
-          keeper-secret-config: ${{ secret.DEMO_SECRET }}
+          keeper-secret-config: ${{ secret.DEMO_SECRETS }}
           secrets: |
            2Plmk_P55N_fqHt-XMSdtg/field/password > pwd
            
-       - name: View password
+      = name: View password
           run: |
             echo 'pwd: ${{steps.ksecrets.outputs.pwd }}'
