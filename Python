@@ -1,0 +1,22 @@
+
+!python --version
+!pip install -U keeper-secrets-manager-core
+from keeper_secrets_manager_core import SecretsManager
+from keeper_secrets_manager_core.storage import FileKeyValueStorage
+
+secrets_manager = SecretsManager(
+    #token='US:OCwIzo1PGryEQxknEASkzLHz0W09HodZaGCDm_9gcPs',
+    config=FileKeyValueStorage('ksm-config.json')
+)
+
+# get a specific secret by record UID
+secret = secrets_manager.get_secrets('FLiA_Ul9iNkPHEIqRbT_1g')[0]
+# get login field from the secret
+my_secret_login = secret.field("login", single=True)
+# get password field from the secret
+my_secret_password = secret.field("password", single=True)
+
+# print out secret and fields
+print(secret)
+print(my_secret_login)
+print(my_secret_password)
